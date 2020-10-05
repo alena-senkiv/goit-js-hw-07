@@ -13,21 +13,32 @@
 // Создай функцию destroyBoxes(), которая очищает div#boxes.
 
 const refs = {
-  numInput: document.querySelector('#controls > input'),
-  createBtn: document.querySelector('[data-action="render]'),
-  destroyBtn: document.querySelector('[data-action="destroy]'),
+  input: document.querySelector('#controls > input'),
+  renderBtn: document.querySelector('[data-action="render"]'),
+  destroyBtn: document.querySelector('[data-action="destroy"]'),
   boxesContainer: document.querySelector('#boxes'),
 };
-console.log(Number(refs.numInput.value));
 
-refs.createBtn.addEventListener('click', createBoxes(Number(refs.numInput.value)));
+const boxProp = {
+  size: 30,
+  bgColor: () => Math.floor(Math.random() * 256),
+};
+
+refs.renderBtn.addEventListener('click', () =>
+  createBoxes(Number(refs.input.value)),
+);
 refs.destroyBtn.addEventListener('click', destroyBoxes);
 
 function createBoxes(amount) {
+  const div = [];
   for (let i = 0; i < amount; i++) {
-    let div = refs.boxesContainer.createElement('div');
+    const divEl = document.createElement('div');
+    divEl.style.width = boxProp.size + i * 10 + 'px';
+    divEl.style.height = boxProp.size + i * 10 + 'px';
+    divEl.style.backgroundColor = `rgb(${boxProp.bgColor()}, ${boxProp.bgColor()}, ${boxProp.bgColor()})`;
+    div.push(divEl);
   }
-  console.log(amount);
+  refs.boxesContainer.append(...div);
 }
 
 function destroyBoxes() {
