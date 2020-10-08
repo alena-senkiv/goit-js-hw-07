@@ -30,7 +30,7 @@ refs.renderBtn.addEventListener('click', () =>
 refs.destroyBtn.addEventListener('click', destroyBoxes);
 
 function createBoxes(amount) {
-  const div = [];
+  const divs = [];
   for (let i = 0; i < amount; i++) {
     const divEl = document.createElement('div');
     divEl.style.width = boxProp.size + i * 10 + 'px';
@@ -38,7 +38,7 @@ function createBoxes(amount) {
     divEl.style.backgroundColor = `rgb(${boxProp.bgColor()}, ${boxProp.bgColor()}, ${boxProp.bgColor()})`;
     div.push(divEl);
   }
-  refs.boxesContainer.append(...div);
+  refs.boxesContainer.append(...divs);
 }
 
 function destroyBoxes() {
