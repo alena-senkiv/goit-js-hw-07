@@ -36,7 +36,7 @@ function createBoxes(amount) {
     divEl.style.width = boxProp.size + i * 10 + 'px';
     divEl.style.height = boxProp.size + i * 10 + 'px';
     divEl.style.backgroundColor = `rgb(${boxProp.bgColor()}, ${boxProp.bgColor()}, ${boxProp.bgColor()})`;
-    div.push(divEl);
+    divs.push(divEl);
   }
   refs.boxesContainer.append(...divs);
 }
